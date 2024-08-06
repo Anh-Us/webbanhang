@@ -1,4 +1,4 @@
-//var updateBtns = document.getElementsByClassName('update-cart')
+var updateBtns = document.getElementsByClassName('update-cart')
 
 for (i=0;i < updateBtns.length;i++){
     updateBtns[i].addEventListener('click',function(){
@@ -14,69 +14,28 @@ for (i=0;i < updateBtns.length;i++){
     })
 }
 
-// function updateUserOrder(productId,action){
-//     console.log('user logged in, success add')
-//     var url ='u/update_item/'
-//     fetch(url,{
-//         method: 'POST',
-//         headers: {
-//             'content-Type':'application/json',
-//             'X-CSRFToken': csrftoken,
-        
-//         },
-//         body:  JSON.stringify({'productId':productId,'action':action})
-
-//     })
-//     .then((response)=>{
-//         return response.json();
-//     })
-//     .then((data)=>{
-//        console.log('data',data);
-//     })
-
-// }
-
-
-// 
-
-const updateBtns = document.getElementsByClassName('update-cart');
-
-for (let i = 0; i < updateBtns.length; i++) {
-    updateBtns[i].addEventListener('click', function() {
-        const productId = this.dataset.product;
-        const action = this.dataset.action;
-        console.log('productId:', productId, 'action:', action);
-
-        console.log('USER:', user);
-        if (user === 'AnonymousUser') {
-            console.log('User is not authenticated');
-        } else {
-            updateUserOrder(productId, action);
-        }
-    });
-}
-
-// Gửi yêu cầu AJAX tới hàm updateItem
-function updateUserOrder(productId, action) {
-    console.log('User is authenticated, sending data...');
-
-    const url = '/update_item/';
-
-    fetch(url, {
+function updateUserOrder(productId,action){
+    console.log('user logged in, success add')
+    var url ='/update_item/'
+    fetch(url,{
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
+            'content-Type':'application/json',
             'X-CSRFToken': csrftoken,
+        
         },
-        body: JSON.stringify({ 'productId': productId, 'action': action })
+        body:  JSON.stringify({'productId':productId,'action':action})
+
     })
-    .then((response) => {
+    .then((response)=>{
         return response.json();
     })
-    .then((data) => {
-        console.log('data:', data);
-        location.reload();
-    });
+    .then((data)=>{
+       console.log('data',data);
+    })
+
 }
 
-//const updateBtns = document.getElementsByClassName('update-cart');
+
+
+
