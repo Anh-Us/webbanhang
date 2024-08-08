@@ -28,10 +28,11 @@ function updateUserOrder(productId,action){
 
     })
     .then((response)=>{
-        return response.json();
+        return response.json()
     })
     .then((data)=>{
-       console.log('data',data);
+       console.log('data',data)
+       location.reload()
     })
 
 }

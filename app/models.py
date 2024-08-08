@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 from django.db import models
-from django.contrib.auth.models import User
+#from django.contrib.auth.models import User
 # Create your models here.
 
 class Customer(models.Model): #khách hàng
@@ -50,13 +50,13 @@ class Order(models.Model):
         
 
 class OrderItem(models.Model): #sản phẩm đã order
-    Product = models.ForeignKey(Product,on_delete=models.SET_NULL,null=True,blank=True)
+    product = models.ForeignKey(Product,on_delete=models.SET_NULL,null=True,blank=True)
     order= models.ForeignKey(Order,on_delete=models.SET_NULL,null=True,blank=True)
     quantity = models.IntegerField(default=0,null=True,blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
     @property
     def get_total(self):
-        total = self.Product.price * self.quantity
+        total = self.product.price * self.quantity
         return total
 
 class ShippingAddress(models.Model): #thông tin
